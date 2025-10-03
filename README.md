@@ -104,6 +104,42 @@ $ sudo rm -rf /usr/local/include/livox_lidar_*
 
 You can now compile the Livox-SDK2 in Visual Studio 2019.
 
+## 2.4 Instruction for Ubunut24.04
+1. Dependencies:
+
+* [CMake 3.0.0+](https://cmake.org/)
+* gcc 4.8.1+
+
+2. Install the **CMake** using apt:
+
+```shell
+$ sudo apt install cmake
+```
+3. change header files:
+* **skd_core/comm/define.h** and **skd_core/logger_handler/file_manager.h**
+```C++
+#include <cstdint>
+```
+
+4. Compile and install the Livox-SDK2:
+
+```shell
+$ git clone https://github.com/Livox-SDK/Livox-SDK2.git
+$ cd ./Livox-SDK2/
+$ mkdir build
+$ cd build
+$ cmake .. && make -j
+$ sudo make install
+```
+
+**Note :**  
+The generated shared library and static library are installed to the directory of "/usr/local/lib". The header files are installed to the directory of "/usr/local/include".
+
+Tips: Remove Livox SDK2:
+
+```shell
+$ sudo rm -rf /usr/local/lib/liblivox_lidar_sdk_*
+$ sudo rm -rf /usr/local/include/livox_lidar_*
 
 # 3. Run the Samples
 
